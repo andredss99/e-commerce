@@ -1,0 +1,40 @@
+version: "3.7"
+services:
+  app:
+    build:
+      args:
+        user: andre
+        uid: 1000
+      context: ./
+      dockerfile: Dockerfile
+    image: ecommerce
+    container_name: ecommerce-app
+    restart: unless-stopped
+    working_dir: /var/www/html
+    ports:
+      - "8000:80"
+    volumes:
+      - .:/var/www/html
+      - ./docker-compose/apache:/etc/apache2/sites-available
+    networks:
+      - ecommerce
+
+  db:
+    image: mysql:8.0
+    container_name: ecommerce-db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${DB_USERNAME}
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes:
+      - ./docker-compose/db:/docker-entrypoint-initdb.d
+    networks:
+      - ecommerce
+
+networks:
+  ecommerce:
+    driver: bridge
