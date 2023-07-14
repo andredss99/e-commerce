@@ -20,7 +20,7 @@ services:
       - ecommerce
 
   db:
-    image: mysql:8.0
+    image: mysql:5.7
     container_name: ecommerce-db
     restart: unless-stopped
     environment:
