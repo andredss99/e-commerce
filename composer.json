@@ -9,11 +9,10 @@
     "require": {
     	"phpmailer/phpmailer":"6.8.0",
     	"slim/slim":"^4.0.0",
-    	"twig/twig":"^3.0",
         "slim/psr7": "^1.6",
         "selective/basepath": "^2.1",
-        "vlucas/phpdotenv": "^5.5",
-        "ext-pdo": "*"
+        "ext-pdo": "*",
+        "slim/twig-view": "^3.3"
     },
     "autoload": {
         "psr-4": {
