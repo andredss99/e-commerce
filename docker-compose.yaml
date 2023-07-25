@@ -7,6 +7,8 @@ services:
         uid: 1000
       context: ./
       dockerfile: Dockerfile
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     image: ecommerce
     container_name: ecommerce-app
     restart: unless-stopped
