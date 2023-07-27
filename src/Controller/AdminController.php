@@ -45,7 +45,10 @@ class AdminController
             ->withHeader('Location', '/admin');
     }
 
-    public function logout()
+    public function logout(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
+        session_unset();
+
+        return (new View(View::VIEW_TYPE_ADMIN, $request, $response))->renderView('login.twig');
     }
 }
