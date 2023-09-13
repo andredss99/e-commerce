@@ -6,7 +6,7 @@ use PDO;
 
 class DbConnection
 {
-    private const HOSTNAME = '172.19.0.2';
+    private const HOSTNAME = 'db';
     private const USERNAME = 'andre';
     private const PASSWORD = 'password';
     private const DB_NAME = 'db_ecommerce';
